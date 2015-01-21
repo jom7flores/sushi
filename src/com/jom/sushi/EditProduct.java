@@ -3,6 +3,7 @@ package com.jom.sushi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,23 +53,20 @@ public class EditProduct extends Activity implements OnClickListener, OnCheckedC
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.edit_product, menu);
-		return true;
+		getMenuInflater().inflate(R.menu.cart_menu, menu);
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_cart) {
+			Intent intent = new Intent( this, Cart.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
 	@Override
 	public void onClick(View v) {
 		final CheckBox cb = (CheckBox) v;
@@ -77,7 +75,7 @@ public class EditProduct extends Activity implements OnClickListener, OnCheckedC
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    builder.setTitle("Choose an Option");
-	    String[] options = { "  -  ", "Cangrejo", "Salmón" };
+	    String[] options = { "  -  ", "Cangrejo", "Salm��n" };
 	    builder.setItems(options, new DialogInterface.OnClickListener() {
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {

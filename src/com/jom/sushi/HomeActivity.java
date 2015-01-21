@@ -39,18 +39,16 @@ public class HomeActivity extends Activity implements OnClickListener{
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.home, menu);
-		return true;
+		getMenuInflater().inflate(R.menu.cart_menu, menu);
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_cart) {
+			Intent intent = new Intent( this, Cart.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

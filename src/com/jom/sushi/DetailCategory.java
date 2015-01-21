@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
 
 import com.jom.sushi.listsutils.AdapterListCategory;
 import com.jom.sushi.listsutils.EditingMode;
 
-public class DetailCategory extends Activity implements EditingMode{
+public class DetailCategory extends Activity implements EditingMode, OnClickListener{
 
 	private ListView list;
 	
@@ -31,22 +33,21 @@ public class DetailCategory extends Activity implements EditingMode{
 		
 		list.setAdapter(new AdapterListCategory(this, lista, this));
 		
+		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.detail_category, menu);
-		return true;
+		getMenuInflater().inflate(R.menu.cart_menu, menu);
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_cart) {
+			Intent intent = new Intent( this, Cart.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -61,5 +62,9 @@ public class DetailCategory extends Activity implements EditingMode{
 	@Override
 	public void onClickAdd(int index) {
 		finish();
+	}
+
+	@Override
+	public void onClick(View v) {
 	}
 }
